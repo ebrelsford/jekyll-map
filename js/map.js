@@ -8,11 +8,11 @@ $(document).ready(function () {
         maxZoom: 18
     }).addTo(map);
 
-    $.getJSON('/data/data.geojson', function (data) {
+    $.getJSON('data/data.geojson', function (data) {
         L.geoJson(data, {
             onEachFeature: function (feature, layer) {
                 layer.on('click', function () {
-                    $.get('/places/' + feature.properties.borough + '/' + feature.properties.name, function (content) {
+                    $.get('places/' + feature.properties.borough + '/' + feature.properties.name, function (content) {
                         layer.bindPopup(content).openPopup();
                     });
                 });
